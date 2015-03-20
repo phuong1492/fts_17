@@ -4,16 +4,20 @@
       <hr>
       <h2 class="intro-text text-center"><strong>Home</strong></h2>
       <hr>
+      <% if !user_signed_in? %>
         <%= image_tag "intro-pic.jpg", alt: "rss feed", class: "img-responsive img-border img-left" %>
-      <hr class="visible-xs">
-      <p>This is the home page for the
-      <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-        sample application.</p>
-      <div class="row">
-        <div class="col-md-7 col-md-offset-5">
-          <%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary button-sign" %>
+        <hr class="visible-xs">
+        <p>This is the home page for the
+        <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
+          sample application.</p>
+        <div class="row">
+          <div class="col-md-7 col-md-offset-5">
+            <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary button-sign" %>
+          </div>
         </div>
-      </div>
+      <% else %>
+          <p>Hi, <%= current_user.username %> logged to website</p>
+      <% end %>
     </div>
   </div>
 </div>
