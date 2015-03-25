@@ -1,0 +1,26 @@
+<% provide(:title, @user.username) %>
+<div class="row">
+  <div class="box">
+    <div class="col-lg-12">
+      <hr>
+      <h2 class="intro-text text-center"><strong><%= @user.username %></strong></h2>
+      <hr>
+       <div class="user_info">
+      <h1>
+       <div class="col-md-5">
+        <p class="round-image-50"><%= image_tag(@user.avatar.url(:thumb)) %></p>
+        <% if user_admin? || current_user?(@user) %>
+        <%= link_to "Edit profile", "#", class: "edit-btn btn btn-primary" %>
+        <% end %>
+        </div>
+      </h1>
+      <div class = "col-md-5">
+        <h2><%= @user.username %></h2>
+        <p>Email: <%= @user.email %></p>
+        <p>Created at: <%= @user.created_at %></p>
+        <p>User Type:<%= user_type(@user) %></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

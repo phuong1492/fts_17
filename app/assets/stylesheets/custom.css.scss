@@ -180,16 +180,24 @@ footer p {
     clear: both;
   }
 }
-
 .round-image-50 {
   background-color: white;
   border: 1px solid #d9d9d9;
   border-radius: 25px;
   -moz-border-radius: 25px;
   -webkit-border-radius: 25px;
-  height: 100px;
-  width: 100px;
+  height: 200px;
+  width: 200px;
   overflow: hidden;
   text-align: center;
   img { width: 100% }
+}
+li {
+  overflow: auto;
+  padding: 5px 0;
+  border-bottom: 1px solid $gray;
+  list-style-type: none;
+}
+.user_info{
+  padding-left: 20%;
 }
