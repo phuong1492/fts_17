@@ -17,9 +17,24 @@ class Admin::LessonsController < ApplicationController
     end
   end
 
+  def edit
+    @lesson = Lesson.find params[:id]
+  end
+
+  def update
+    @lesson = Lesson.find params[:id]
+    if @lesson.update(lesson_params) && @lesson.save
+      flash[:info] = "Updated lesson!"
+      redirect_to admin_lessons_path
+    else
+      render :edit
+    end
+  end
+
   private
   def lesson_params
     params.require(:lesson).permit :name, :time,
-      questions_attributes: [:content, options_attributes: [:content, :correct, :_destroy]]
+      questions_attributes: [:content, :id, 
+        options_attributes: [:content, :correct, :_destroy, :id]]
   end
 end
