@@ -1,0 +1,8 @@
+<%= f.label :question %>
+<%= f.text_area :content, rows: 3, class: 'form-control' %>
+<%= f.fields_for :options do |builder| %>
+  <%= render 'option_fields', f: builder %>
+<% end %>
+<div class="col-md-12" id="add-answer">
+  <%= link_to_add_fields "Add answer", f, :options %>
+</div>
