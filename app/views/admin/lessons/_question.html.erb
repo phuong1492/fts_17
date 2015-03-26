@@ -1,0 +1,7 @@
+<% @questions.each do |question| %>
+  <p>Question</p>
+  <div><%= question.content %></div>
+  <div>
+    <%= render 'option', f: question.options %>
+  </div>
+<% end %>

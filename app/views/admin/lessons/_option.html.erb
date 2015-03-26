@@ -1,0 +1,9 @@
+<% f.each_with_index do |option, index| %>
+  <p>
+    <div class="col-md-1"><%= option.correct ? "O" : "X" %></div>
+    <div class="col-md-1">
+      <%= get_character_index index %>: 
+    </div>
+    <%= option.content %>
+  </p>
+<% end %>

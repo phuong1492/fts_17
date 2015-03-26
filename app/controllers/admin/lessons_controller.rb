@@ -31,6 +31,11 @@ class Admin::LessonsController < ApplicationController
     end
   end
 
+  def show
+    @lesson = Lesson.find params[:id]
+    @questions = @lesson.questions
+  end
+
   private
   def lesson_params
     params.require(:lesson).permit :name, :time,
