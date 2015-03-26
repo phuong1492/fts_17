@@ -36,7 +36,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+  def after_update_path_for(resource)
+    current_user
+  end
 
   # You can put the params you want to permit in the empty array.
   # def configure_sign_up_params
@@ -58,7 +61,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   private
- 
   def sign_up_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end

@@ -1,0 +1,11 @@
+<li>
+  <div class= "col-md-3 col-md-offset-1">
+    <%= link_to user.username, [:admin, user] %>
+    </div>
+    <div class= "col-md-3 col-md-offset-5">
+    <%= link_to "Detail", [:admin, user], class: "btn btn-primary" %>
+    <%= link_to "Edit", [:edit, :admin, user], class: "btn btn-primary" %>
+    <%= link_to "Destroy", [:admin, user], data: { confirm: "You sure?" }, 
+      method: :delete, class: "btn btn-primary" %>
+  </div>
+</li>
