@@ -157,7 +157,9 @@ footer p {
   }
 
   .nav>li>a {
-    padding: 35px;
+    padding: 20px;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
   }
 
   .navbar-nav>li>a {
@@ -195,7 +197,6 @@ footer p {
 li {
   overflow: auto;
   padding: 5px 0;
-  border-bottom: 1px solid $gray;
   list-style-type: none;
 }
 .user_info{

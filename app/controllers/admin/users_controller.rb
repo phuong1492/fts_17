@@ -12,13 +12,34 @@ class Admin::UsersController < ApplicationController
     @user = User.find params[:id]
   end
 
+  def edit
+    @user = User.find params[:id] 
+  end
+
+  def update
+    @user = User.find params[:id]
+    if @user.update_attributes user_params
+      flash[:success] = "User #{@user.username} has been updated"
+      redirect_to admin_users_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    user = User.find params[:id]
+    user.destroy
+    flash[:success] = "User #{user.username} has been deleted"
+    redirect_to admin_users_path
+  end
+
   private
   def admin_user
     redirect_to root_url unless user_admin? 
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password,
+    params.require(:user).permit(:username, :email, :password,
                                    :password_confirmation)
   end
 end
