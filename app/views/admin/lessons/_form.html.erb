@@ -1,0 +1,17 @@
+<%= form_for [:admin, @lesson] do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.label :time %>
+    <%= f.number_field :time, class: 'form-control' %>
+  </p>
+  <%= f.fields_for :questions do |builder| %>
+    <%= render 'question_fields', f: builder %>
+  <% end %>
+  <p>
+    <%= link_to_add_fields "Add question", f, :questions %>
+  </p>
+  <p>
+    <%= f.submit :Submit, class: 'btn btn-primary col-md-12' %>
+  </p>
+<% end %>
