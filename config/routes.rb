@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'help'    => 'static_pages#help'
   get 'contact' => 'static_pages#contact'
   resources :users
+  resources :lessons
+  resources :tests
   
   namespace :admin do
     root             'users#index'

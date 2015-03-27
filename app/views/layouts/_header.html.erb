@@ -17,7 +17,7 @@
             <li><%= link_to "Lesson", admin_lessons_path %></li>
             <li><%= link_to "Users", admin_users_path %></li>
           <% else %>
-            <li><%= link_to "Test", "#" %></li>
+            <li><%= link_to "Test", tests_path %></li>
           <% end %>
           <li><%= link_to "Account", current_user %></li>
           <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
