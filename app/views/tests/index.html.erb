@@ -11,7 +11,7 @@
         <p><%= f.label "Lesson", class: 'col-md-2' %></p>
         <p><%= f.select :lesson_id, options_for_select(Lesson.all.collect{|lesson| [lesson.name, lesson.id]}), class: 'col-md-6' %></p>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :status, value: "Start" %>
+        <%= f.hidden_field :status, value: "Ready" %>
         <p><%= f.submit "Submit", class: "col-md-12 btn btn-primary" %></p>
       <% end %>
     </div>

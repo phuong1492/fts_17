@@ -32,6 +32,7 @@ gem 'mini_magick',             '3.8.0'
 gem 'fog',                     '1.23.0'
 gem 'jquery-datetimepicker-rails', '~> 2.4.1.0'
 gem 'paperclip', '~> 4.1'
+gem 'pry'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -61,4 +62,3 @@ group :production do
   gem 'rails_12factor', '0.0.2'
   gem 'unicorn',        '4.8.3'
 end
-

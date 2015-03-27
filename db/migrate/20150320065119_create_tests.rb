@@ -5,7 +5,7 @@ class CreateTests < ActiveRecord::Migration
       t.integer :lesson_id
       t.integer :answer_id
       t.integer :mark
-      t.boolean :is_started
+      t.string :status
 
       t.timestamps null: false
     end
