@@ -1,0 +1,39 @@
+<% provide(:title, 'All lessons') %>
+<div class="row">
+  <div class="box">
+    <div class="col-lg-12">
+      <hr>
+      <h2 class="intro-text text-center"><strong>Select lesson</strong></h2>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for @test do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <p><%= f.label "Lesson", class: 'col-md-2' %></p>
+        <p><%= f.select :lesson_id, options_for_select(Lesson.all.collect{|lesson| [lesson.name, lesson.id]}), class: 'col-md-6' %></p>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :status, value: "Start" %>
+        <p><%= f.submit "Submit", class: "col-md-12 btn btn-primary" %></p>
+      <% end %>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Lesson</th>
+          <th>Created time</th>
+          <th>Status<th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tests.each do |test| %>
+          <tr>
+            <th><%= test.lesson.name %></th>
+            <th><%= test.created_at %></th>
+            <th><%= test.status %></th>
+            <th><%= link_to "Start" %></th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
