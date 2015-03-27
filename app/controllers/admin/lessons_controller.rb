@@ -1,6 +1,6 @@
 class Admin::LessonsController < ApplicationController
   def index
-    
+    @lessons = Lesson.paginate page: params[:page], per_page: 20
   end
 
   def new
@@ -11,7 +11,7 @@ class Admin::LessonsController < ApplicationController
     @lesson = Lesson.new lesson_params
     if @lesson.save
       flash[:info] = "Created new lesson: #{@lesson.name}"
-      redirect_to admin_lessons_path
+      redirect_to admin_lesson_path(@lesson)
     else
       render :new
     end
@@ -23,9 +23,9 @@ class Admin::LessonsController < ApplicationController
 
   def update
     @lesson = Lesson.find params[:id]
-    if @lesson.update(lesson_params) && @lesson.save
+    if @lesson.update(lesson_params)
       flash[:info] = "Updated lesson!"
-      redirect_to admin_lessons_path
+      redirect_to admin_lesson_path(@lesson)
     else
       render :edit
     end

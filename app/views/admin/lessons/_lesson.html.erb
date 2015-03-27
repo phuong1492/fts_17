@@ -1,0 +1,6 @@
+<tr>
+  <td><%= lesson.name %></td>
+  <td><%= lesson.time %></td>
+  <td><%= link_to "Edit", edit_admin_lesson_path(lesson) %></td>
+  <td><%= link_to "Delete", '#', data: {confirm: "You sure?"}, method: :delete %></td>
+</tr>
