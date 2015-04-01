@@ -17,11 +17,22 @@ class TestsController < ApplicationController
 
   def show
     @test = Test.find params[:id]
-    @answers = @test.answers
+  end
+
+  def update
+    @test = Test.find params[:id]
+    if @test.update_attributes test_params
+      flash[:info] = "Update answer sheet!"
+      render :show
+    else
+      flash[:danger] = "Can't update answer sheet!"
+      redirect_to tests_path
+    end
   end
 
   private
   def test_params
-    params.require(:test).permit :id, :lesson_id, :user_id, :status
+    params.require(:test).permit :id, :lesson_id, :user_id, :status,
+      answers_attributes: [:id, :option_id]
   end
 end
