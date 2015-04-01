@@ -15,10 +15,6 @@ class TestsController < ApplicationController
     end
   end
 
-  def edit
-    
-  end
-
   private
   def test_params
     params.require(:test).permit :id, :lesson_id, :user_id, :status
