@@ -1,0 +1,12 @@
+<div class="answer_sheets">
+  <p><%= f.options[:child_index]+1 %>.&nbsp
+    <%= f.hidden_field :question_id, value: f.object.question.id %>
+    <%= f.object.question.content %>
+  </p>
+  <% f.object.question.options.each do |option| %>
+    <div class="col-md-12">
+      <%= f.radio_button :option_id, option.id %>
+      <%= option.content %>
+    </div>
+  <% end %>
+</div>

@@ -15,6 +15,11 @@ class TestsController < ApplicationController
     end
   end
 
+  def show
+    @test = Test.find params[:id]
+    @answers = @test.answers
+  end
+
   private
   def test_params
     params.require(:test).permit :id, :lesson_id, :user_id, :status

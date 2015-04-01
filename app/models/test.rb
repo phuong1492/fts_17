@@ -8,7 +8,7 @@ class Test < ActiveRecord::Base
 
   private
   def init_answers
-    self.lesson.questions.sample(2).each do |question|
+    self.lesson.questions.sample(20).each do |question|
       self.answers.build(question: question)
     end
   end

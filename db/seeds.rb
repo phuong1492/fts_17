@@ -6,15 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-20.times do |n|
-  name = "Lesson #{n+1}"
+10.times do |n|
+  name = Faker::Name.name
   time = 20
   lesson = Lesson.create!(name: name, time: time)
   30.times do |m|
-    content = "Question #{n+1}-#{m+1}"
+    content = Faker::Lorem.sentence(2)
     question = lesson.questions.create!(content: content)
     4.times do |k|
-      option = question.options.create!(content: "Option #{k+1}")
+      option = question.options.create!(content: Faker::Lorem.sentence(2))
     end
   end
 end

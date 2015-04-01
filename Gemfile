@@ -33,6 +33,7 @@ gem 'fog',                     '1.23.0'
 gem 'jquery-datetimepicker-rails', '~> 2.4.1.0'
 gem 'paperclip', '~> 4.1'
 gem 'pry'
+gem 'faker', '1.4.2'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
