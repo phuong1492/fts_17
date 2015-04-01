@@ -202,3 +202,22 @@ li {
 .user_info{
   padding-left: 20%;
 }
+.test_user_name {
+  float: left;
+}
+.test_time_count_down {
+  float: right;
+  text-align: right;
+}
+.test_lesson_name {
+  text-align: center;
+}
+.answer_sheets input[type = radio] {
+  width: 30px;
+  margin-bottom: 10px;
+}
+.answer_sheets {
+  margin-bottom: 30px;
+}
+.option_sheets {
+}
