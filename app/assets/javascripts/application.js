@@ -33,3 +33,25 @@ function remove_fields(field) {
   $(field).prev().val("true");
   $(field).parent().hide();
 }
+
+function secondPassed() {
+    var minutes = Math.round((seconds - 30)/60);
+    var remainingSeconds = seconds % 60;
+    if (remainingSeconds < 10) {
+        remainingSeconds = "0" + remainingSeconds;  
+    }
+    $("div#countdown").html(minutes + ":" + remainingSeconds);
+    if (seconds <= 0) {
+        clearInterval(countdownTimer);
+        $("div#countdown").html("Time out");
+        $("#status").val("Completed");
+        $("#submit-button").click();
+    } else {
+        seconds--;
+    }
+}
+
+function clearIntervals(highestTimerId){
+  for (var i = 0; i < highestTimerId; i++)
+    clearInterval(i);
+}

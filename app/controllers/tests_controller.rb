@@ -17,12 +17,21 @@ class TestsController < ApplicationController
 
   def show
     @test = Test.find params[:id]
+    if @test.ready?
+      @test.start_time = Time.zone.now
+      @test.status = "Submitted"
+      @test.save
+      @count_down_time = @test.lesson.time * 60
+    else
+      @count_down_time = @test.lesson.time * 60 - (Time.zone.now - @test.start_time).to_i
+    end
   end
 
   def update
     @test = Test.find params[:id]
     if @test.update_attributes test_params
       flash[:info] = "Update answer sheet!"
+      @count_down_time = 0
       render :show
     else
       flash[:danger] = "Can't update answer sheet!"
