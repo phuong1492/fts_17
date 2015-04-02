@@ -7,6 +7,7 @@ class Test < ActiveRecord::Base
 
   before_create :init_answers
 
+  answers_is_correct = []
   def completed?
     self.status == "Completed"
   end

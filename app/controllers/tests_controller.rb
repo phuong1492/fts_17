@@ -25,13 +25,21 @@ class TestsController < ApplicationController
     else
       @count_down_time = @test.lesson.time * 60 - (Time.zone.now - @test.start_time).to_i
     end
+    if @test.completed?
+      @test.answers.each do |answer|
+        if(answer.option && answer.option.correct)
+          answer.correct = true
+        end
+      end
+      @test.save
+    end
   end
 
   def update
     @test = Test.find params[:id]
     if @test.update_attributes test_params
       flash[:info] = "Update answer sheet!"
-      @count_down_time = 0
+      @count_down_time = @test.lesson.time * 60 - (Time.zone.now - @test.start_time).to_i
       render :show
     else
       flash[:danger] = "Can't update answer sheet!"
