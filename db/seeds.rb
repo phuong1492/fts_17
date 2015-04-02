@@ -14,7 +14,7 @@
     content = Faker::Lorem.sentence(2)
     question = lesson.questions.create!(content: content)
     4.times do |k|
-      option = question.options.create!(content: Faker::Lorem.sentence(2))
+      option = question.options.create!(content: Faker::Lorem.sentence(2), correct: (m + n + k) % 4 == 0)
     end
   end
 end

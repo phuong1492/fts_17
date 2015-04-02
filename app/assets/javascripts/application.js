@@ -35,23 +35,47 @@ function remove_fields(field) {
 }
 
 function secondPassed() {
-    var minutes = Math.round((seconds - 30)/60);
-    var remainingSeconds = seconds % 60;
-    if (remainingSeconds < 10) {
-        remainingSeconds = "0" + remainingSeconds;  
-    }
-    $("div#countdown").html(minutes + ":" + remainingSeconds);
-    if (seconds <= 0) {
-        clearInterval(countdownTimer);
-        $("div#countdown").html("Time out");
-        $("#status").val("Completed");
-        $("#submit-button").click();
-    } else {
-        seconds--;
-    }
+  var minutes = Math.round((seconds - 30)/60);
+  var remainingSeconds = seconds % 60;
+  if (remainingSeconds < 10) {
+    remainingSeconds = "0" + remainingSeconds;  
+  }
+  $("div#countdown").html(minutes + ":" + remainingSeconds);
+  if (seconds <= 0) {
+    clearInterval(countdownTimer);
+    $("div#countdown").html("Time out");
+    $("#status").val("Completed");
+    $("#submit-button").click()
+  } else {
+    seconds--;
+  }
 }
 
 function clearIntervals(highestTimerId){
   for (var i = 0; i < highestTimerId; i++)
     clearInterval(i);
 }
+
+function onLinkTestClick(id, ready){
+  if (ready){
+    var data = "status=Submitted";
+    $.ajax({
+      url: "/tests/" + id,
+      type: 'PUT',
+      data: data,
+      success: function(data) {
+        alert('Load was performed.');
+      }
+    });
+  }
+}
+
+$(document).ready(function(){
+  var link_tests = $("a[id*=link-test-]");
+  for (var i = 0; i < link_tests.length; i++){
+    $("#" + link_tests[i].id).click(function(event){
+      var id = event.target.id;
+      onLinkTestClick($("#" + id).data("id"), $("#" + id).data("ready"));
+    });
+  }
+});

@@ -23,6 +23,12 @@ class Test < ActiveRecord::Base
     !self.ready? && !self.completed?
   end
 
+  def auto_check
+    self.answers.each do |answer|
+      answer.correct = answer.option && answer.option.correct
+    end
+  end
+
   private
   def init_answers
     self.lesson.questions.sample(20).each do |question|
