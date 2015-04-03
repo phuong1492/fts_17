@@ -4,8 +4,8 @@
     <%= f.object.question.content %>
   </p>
   <% f.object.question.options.each do |option| %>
-    <div class="col-md-12">
-      <%= f.radio_button :option_id, option.id %>
+    <div class="col-md-12" style = "<%= get_option_style(f.object, option, @test) %>">
+      <%= f.radio_button :option_id, option.id, disabled: @test.completed? %>
       <%= option.content %>
     </div>
   <% end %>
