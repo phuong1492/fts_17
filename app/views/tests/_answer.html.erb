@@ -3,9 +3,14 @@
     <%= f.hidden_field :question_id, value: f.object.question.id %>
     <%= f.object.question.content %>
   </p>
+  <% if f.object.question.options.count == 0 %>
+    <div>
+      <%= f.text_area :content, class: 'col-sm-12', rows: '4', disabled: @test.completed? %>
+    </div>
+  <% end %>
   <% f.object.question.options.each do |option| %>
     <div class="col-md-12" style = "<%= get_option_style(f.object, option, @test) %>">
-      <%= f.radio_button :option_id, option.id, disabled: @test.completed? %>
+      <%= f.radio_button :option_id, option.id,  disabled: @test.completed? %>
       <%= option.content %>
     </div>
   <% end %>

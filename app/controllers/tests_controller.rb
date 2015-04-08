@@ -47,7 +47,7 @@ class TestsController < ApplicationController
   private
   def test_params
     params.require(:test).permit :id, :lesson_id, :user_id, :status,
-      answers_attributes: [:id, :option_id]
+      answers_attributes: [:id, :option_id, :content]
   end
 
   def check_admin_user
