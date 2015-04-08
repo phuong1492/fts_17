@@ -1,0 +1,36 @@
+<% provide(:title, 'All tests') %>
+<div class="row">
+  <div class="box">
+    <div class="col-lg-12">
+      <hr>
+      <h2 class="intro-text text-center"><strong>All tests</strong></h2>
+    </div>
+    <table class="table col-lg-12">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Lesson</th>
+          <th>Created time</th>
+          <th>Status<th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tests.each do |test| %>
+          <tr>
+            <th><%= link_to test.user.username, admin_user_path(test.user) %></th>
+            <th>
+              <%= link_to test.lesson.name, test.completed? ? admin_test_path(test) : "#" %>
+            </th>
+            <th><%= test.created_at %></th>
+            <th><%= test.status %></th>
+            <th>
+              <%= link_to get_word_of_link(test), test.completed? ? admin_test_path(test) : "#", 
+                id: "link-test-#{test.id}", data: {id: test.id, ready: test.ready?} %>
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
