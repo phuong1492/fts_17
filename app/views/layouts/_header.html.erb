@@ -16,6 +16,7 @@
           <% if user_admin? %>
             <li><%= link_to "Lesson", admin_lessons_path %></li>
             <li><%= link_to "Users", admin_users_path %></li>
+            <li><%= link_to "Test", admin_tests_path %></li>
           <% else %>
             <li><%= link_to "Test", tests_path %></li>
           <% end %>

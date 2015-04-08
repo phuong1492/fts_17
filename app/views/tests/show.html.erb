@@ -31,7 +31,7 @@
         <%= f.fields_for :answers do |builder| %>
           <%= render 'answer', f: builder %>
         <% end %>
-        <%= f.submit "Submit", class: 'btn btn-primary col-md-12', disabled: @test.completed?, id: "submit-button" %>
+        <%= f.submit "Submit", class: 'btn btn-primary col-md-12', disabled: @test.completed?, id: "submit-button", style: "margin-top: 10px" %>
       <% end %>
     </div>
   </div>
