@@ -1,12 +1,14 @@
 module TestsHelper
+  include UsersHelper
+
   def get_word_of_link test
     if test.ready?
-      "Start"
+      user_admin? ? "Not start" : "Start"
     elsif test.testing?
-      "Continue"
+      user_admin? ? "Doing" : "Continue"
     elsif test.completed?
-      "View"
-    end
+      user_admin? ? "Check" : "View"
+    end 
   end
 
   def get_option_style answer, option, test
