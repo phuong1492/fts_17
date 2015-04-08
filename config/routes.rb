@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     root             'users#index'
     resources :lessons
     resources :users
-    resources :tests only: [:index, :show, :update]
+    resources :tests, only: [:index, :show, :update]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
