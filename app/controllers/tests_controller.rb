@@ -1,4 +1,6 @@
 class TestsController < ApplicationController
+  before_action :check_admin_user, only: [:index, :create, :show, :update]
+
   def index
     @test = Test.new
     @tests = current_user.tests
@@ -46,5 +48,11 @@ class TestsController < ApplicationController
   def test_params
     params.require(:test).permit :id, :lesson_id, :user_id, :status,
       answers_attributes: [:id, :option_id]
+  end
+
+  def check_admin_user
+    if current_user.role == "admin"
+      redirect_to admin_tests_path
+    end
   end
 end
