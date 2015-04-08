@@ -40,6 +40,12 @@ class Admin::LessonsController < ApplicationController
     @questions = @lesson.questions
   end
 
+  def destroy
+    Lesson.find(params[:id]).destroy
+    flash[:success] = "Deleted lesson."
+    redirect_to admin_lessons_path
+  end
+
   private
   def lesson_params
     params.require(:lesson).permit :name, :time,
