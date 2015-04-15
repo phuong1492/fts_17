@@ -23,7 +23,7 @@
     </div>
     <div class="col-md-12">
     </div>
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-6 col-md-offset-3 count-down" data-count-down-time="<%= @count_down_time %>">
       <%= form_for(@test) do |f| %>
         <%= f.hidden_field :status, value: "Submitted", id: "status" %>
         <%= f.hidden_field :user_id, value: @test.user.id %>
@@ -38,7 +38,7 @@
 </div>
 
 <script>
-  var seconds = <%= @count_down_time %>;
+  var seconds = $(".count-down").data("count-down-time");
   secondPassed();
   var countdownTimer = setInterval(function(){
     secondPassed();
